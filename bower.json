@@ -1,0 +1,29 @@
+{
+  "name": "kazamax",
+  "version": "1.0.0",
+  "authors": [
+    "alanjhonnes <aj@alanjhonnes.com>"
+  ],
+  "description": "kazamax website",
+  "keywords": [
+    "kazamax"
+  ],
+  "license": "proprietary",
+  "homepage": "http://kazamax.com.br",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.3.12",
+    "angular-route": "1.3.x",
+    "angular-loader": "1.3.x",
+    "angular-mocks": "~1.3.x",
+    "html5-boilerplate": "~4.3.0",
+    "angular-ui-router": "~0.2.13"
+  }
+}

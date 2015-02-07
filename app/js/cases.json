@@ -1,0 +1,20 @@
+[
+  {
+    "name": "case 1",
+    "slug": "case-1",
+    "image": "img/case1.jpg",
+    "description:": "Lorem ipsum dolor sit amet dum pore atroxca."
+  },
+  {
+    "name": "case 2",
+    "slug": "case-2",
+    "image": "img/case2.jpg",
+    "description:": "Lorem ipsum dolor sit amet dum pore atroxca."
+  },
+  {
+    "name": "case 3",
+    "slug": "case-3",
+    "image": "img/case3.jpg",
+    "description:": "Lorem ipsum dolor sit amet dum pore atroxca."
+  }
+]
