@@ -1,0 +1,30 @@
+<section>
+
+</section>
+
+<section class="contact-page">
+    <h1>{{ 'title.contact'|translate }}</h1>
+    <form action="" method="POST" role="form">
+    	<legend>{{ 'contact.form-legend'|translate }}</legend>
+
+    	<div class="form-group">
+    		<label for="input-name" class="sr-only">{{ 'contact.form.name'|translate }}</label>
+    		<input type="text" class="form-control" name="name" id="input-name" placeholder="{{ 'contact.form.name'|translate }}">
+    	</div>
+        <div class="form-group">
+            <label for="input-name" class="sr-only">{{ 'contact.form.email'|translate }}</label>
+            <input type="text" class="form-control" name="name" id="input-email" placeholder="{{ 'contact.form.email'|translate }}">
+        </div>
+        <div class="form-group">
+            <label for="input-name" class="sr-only">{{ 'contact.form.phone'|translate }}</label>
+            <input type="text" class="form-control" name="name" id="input-phone" placeholder="{{ 'contact.form.phone'|translate }}">
+        </div>
+        <div class="form-group">
+            <textarea name="message" placeholder="{{ 'contact.form.message'|translate }}"></textarea>
+        </div>
+
+
+
+    	<button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</section>

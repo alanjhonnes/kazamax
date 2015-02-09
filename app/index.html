@@ -1,42 +1,143 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html lang="en" ng-app="kazamax" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="kazamax" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="kazamax" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="kazamax" class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
+  <title>Kazamax</title>
   <meta name="description" content="">
+  <meta name="keywords" content="kazamax">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="main.css">
-  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
-</head>
-<body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
-
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
-
-  <div ui-view></div>
-
-  <div>Angular seed app: v<span app-version></span></div>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <base href="/">
+  <script src="/bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 
   <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="/bower_components/angular-translate/angular-translate.js"></script>
+  <script src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/app.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+<header class="header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12">
+        <a class="logo" ui-sref="home"><img src="img/logo.png" alt="Kazamax" class="pull-left"/></a>
+        <button class="btn btn-menu pull-left" type="button" ng-click="toggleMenu()" >
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+          <span>{{ 'button.menu'|translate }}</span>
+        </button>
+        <div ng-controller="TranslationCtrl" class="ng-scope locale-menu">
+          <button class="btn ng-scope pull-right locale-button" ng-show="language === 'en'" ng-click="changeLanguage('pt_BR')">{{ 'button.pt'|translate }}</button>
+          <button class="btn ng-scope pull-right locale-button" ng-click="changeLanguage('en')" ng-show="language === 'pt_BR'">{{ 'button.en'|translate }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="overlay" ng-show="menuOpen">
+  <div class="container-fluid">
+    <div class="row">
+      <nav role="navigation" class="navigation col-sm-8 col-sm-push-4">
+        <div class="clearfix">
+          <a class="btn-close pull-right" ng-click="closeMenu()">
+            {{ 'button.close'|translate }}
+          </a>
+        </div>
+
+        <ul class="menu">
+          <li class="menu-item">
+            <a class="menu-link" ui-sref="business">
+              {{ 'title.about-business'|translate }}
+            </a>
+            <ul class="menu">
+              <li class="menu-item">
+                <a class="menu-link" ui-sref="business.oportunity">
+                  {{ 'title.oportunity'|translate }}
+                </a>
+              </li>
+              <li class="menu-item">
+                <a class="menu-link" ui-sref="business.challenge">
+                  {{ 'title.challenge'|translate }}
+                </a>
+                <ul class="menu">
+                  <li class="menu-item">
+                    <a class="menu-link" ui-sref="business.challenge.identifying">
+                      {{ 'title.identifying'|translate }}
+                    </a>
+                  </li>
+                  <li class="menu-item">
+                    <a class="menu-link" ui-sref="business.challenge.operation">
+                      {{ 'title.operation'|translate }}
+                    </a>
+                  </li>
+                  <li class="menu-item">
+                    <a class="menu-link" ui-sref="business.challenge.distributor">
+                      {{ 'title.distributor'|translate }}
+                    </a>
+                  </li>
+                  <li class="menu-item">
+                    <a class="menu-link" ui-sref="business.challenge.subsidiary">
+                      {{ 'title.subsidiary'|translate }}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+        <ul class="menu">
+          <li class="menu-item">
+            <a class="menu-link" ui-sref="kazamax">
+              {{ 'title.about-kazamax'|translate }}
+            </a>
+            <ul class="menu">
+              <li class="menu-item">
+                <a class="menu-link" ui-sref="kazamax.services">
+                  {{ 'title.services'|translate }}
+                </a>
+              </li>
+              <li class="menu-item">
+                <a class="menu-link" ui-sref="kazamax.advantages">
+                  {{ 'title.advantages'|translate }}
+                </a>
+              </li>
+              <li class="menu-item">
+                <a class="menu-link" ui-sref="kazamax.diferentials">
+                  {{ 'title.diferentials'|translate }}
+                </a>
+              </li>
+              <li class="menu-item">
+                <a class="menu-link" ui-sref="kazamax.cases">
+                  {{ 'title.cases'|translate }}
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="menu">
+          <li class="menu-item">
+            <a class="menu-link" ui-sref="contact">
+              {{ 'title.contact'|translate }}
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+<div ui-view role="main">
+
+</div>
+
+
 </body>
 </html>
