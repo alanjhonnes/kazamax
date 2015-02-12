@@ -1,30 +1,123 @@
-<section>
-
+<section ng-style="{ minHeight: wHeight * 0.8 + 'px' }">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5 text-center">
+                <img src="img/intro-icon.png" alt="" class="img-responsive"/>
+            </div>
+            <div class="col-sm-7">
+                <h1 translate="{{ 'text.home-intro' }}"></h1>
+                <ul class="intro-itens clearfix">
+                    <li>{{ 'text.partnership'|translate }}</li>
+                    <li>{{ 'text.consulting'|translate }}</li>
+                    <li>{{ 'text.execution'|translate }}</li>
+                    <li>{{ 'text.governance'|translate }}</li>
+                </ul>
+                <a class="btn-more-info" ui-sref="home">{{ 'button.more-info'|translate }}</a>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section class="contact-page">
-    <h1>{{ 'title.contact'|translate }}</h1>
-    <form action="" method="POST" role="form">
-    	<legend>{{ 'contact.form-legend'|translate }}</legend>
-
-    	<div class="form-group">
-    		<label for="input-name" class="sr-only">{{ 'contact.form.name'|translate }}</label>
-    		<input type="text" class="form-control" name="name" id="input-name" placeholder="{{ 'contact.form.name'|translate }}">
-    	</div>
-        <div class="form-group">
-            <label for="input-name" class="sr-only">{{ 'contact.form.email'|translate }}</label>
-            <input type="text" class="form-control" name="name" id="input-email" placeholder="{{ 'contact.form.email'|translate }}">
+<section class="about-page" ng-style="{ minHeight: wHeight * 0.8 + 'px' }">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 class="section-title">{{ 'title.about-business'|translate }}</h1>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="input-name" class="sr-only">{{ 'contact.form.phone'|translate }}</label>
-            <input type="text" class="form-control" name="name" id="input-phone" placeholder="{{ 'contact.form.phone'|translate }}">
+        <div class="row">
+            <div class="col-sm-4 col-sm-push-4">
+                <img src="img/icon-opportunity.png" alt="" class="img-responsive"/>
+                <h5 class="topic-heading">{{ 'title.opportunity'|translate }}</h5>
+                <p>
+                    {{ 'text.opportunity'|translate }}
+                </p>
+                <a class="btn-read-more" ui-sref="home.business.opportunity">{{ 'button.read-more'|translate }}</a>
+            </div>
+            <div class="col-sm-4 col-sm-push-4">
+                <img src="img/icon-challenge.png" alt="" class="img-responsive"/>
+                <h5 class="topic-heading">{{ 'title.challenge'|translate }}</h5>
+                <p>
+                    {{ 'text.challenge'|translate }}
+                </p>
+                <a class="btn-read-more" ui-sref="home.business.challenge">{{ 'button.read-more'|translate }}</a>
+            </div>
         </div>
-        <div class="form-group">
-            <textarea name="message" placeholder="{{ 'contact.form.message'|translate }}"></textarea>
+    </div>
+</section>
+
+<section class="kazamax-page" ng-style="{ minHeight: wHeight * 0.8 + 'px' }">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 class="section-title">{{ 'title.about-kazamax'|translate }}</h1>
+            </div>
         </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <img src="img/icon-services.png" alt="" class="img-responsive"/>
+                <h5 class="topic-heading">{{ 'title.services'|translate }}</h5>
+                <p>
+                    {{ 'text.services'|translate }}
+                </p>
+                <a class="btn-read-more" ui-sref="home.kazamax.services">{{ 'button.read-more'|translate }}</a>
+            </div>
+            <div class="col-sm-3">
+                <img src="img/icon-advantages.png" alt="" class="img-responsive"/>
+                <h5 class="topic-heading">{{ 'title.advantages'|translate }}</h5>
+                <p>
+                    {{ 'text.advantages'|translate }}
+                </p>
+                <a class="btn-read-more" ui-sref="home.kazamax.advantages">{{ 'button.read-more'|translate }}</a>
+            </div>
+            <div class="col-sm-3">
+                <img src="img/icon-differentials.png" alt="" class="img-responsive"/>
+                <h5 class="topic-heading">{{ 'title.differentials'|translate }}</h5>
+                <p>
+                    {{ 'text.differentials'|translate }}
+                </p>
+                <a class="btn-read-more" ui-sref="home.kazamax.differentials">{{ 'button.read-more'|translate }}</a>
+            </div>
+            <div class="col-sm-3">
+                <img src="img/icon-cases.png" alt="" class="img-responsive"/>
+                <h5 class="topic-heading">{{ 'title.cases'|translate }}</h5>
+                <p>
+                    {{ 'text.cases'|translate }}
+                </p>
+                <a class="btn-read-more" ui-sref="home.kazamax.cases">{{ 'button.read-more'|translate }}</a>
+            </div>
+        </div>
+    </div>
+</section>
 
+<section class="contact-page" ng-style="{ minHeight: wHeight * 0.8 + 'px' }">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>{{ 'title.contact'|translate }}</h1>
+                <div class="col-sm-6 col-sm-push-3">
+                    <form action="" method="POST" role="form" class="contact-form">
+                        <legend>{{ 'contact.form-legend'|translate }}</legend>
 
-
-    	<button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+                        <div class="form-group">
+                            <label for="input-name" class="sr-only">{{ 'contact.form.name'|translate }}</label>
+                            <input type="text" class="form-control" name="name" id="input-name" placeholder="{{ 'contact.form.name'|translate }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-name" class="sr-only">{{ 'contact.form.email'|translate }}</label>
+                            <input type="text" class="form-control" name="name" id="input-email" placeholder="{{ 'contact.form.email'|translate }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-name" class="sr-only">{{ 'contact.form.phone'|translate }}</label>
+                            <input type="text" class="form-control" name="name" id="input-phone" placeholder="{{ 'contact.form.phone'|translate }}">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" class="form-control" placeholder="{{ 'contact.form.message'|translate }}"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">{{ 'button.submit'|translate }}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>

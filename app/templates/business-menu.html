@@ -1,0 +1,35 @@
+<h1>About your business in Brazil</h1>
+<ul class="menu">
+    <li class="menu-item">
+        <a class="menu-link" ui-sref="home.business.opportunity" ui-sref-active="active">
+            {{ 'title.opportunity'|translate }}
+        </a>
+    </li>
+    <li class="menu-item">
+        <a class="menu-link" ui-sref="home.business.challenge" ui-sref-active="active">
+            {{ 'title.challenge'|translate }}
+        </a>
+        <ul class="menu" collapse="!$state.includes('home.business.challenge')">
+            <li class="menu-item">
+                <a class="menu-link" ui-sref="home.business.challenge.identifying" ui-sref-active="active">
+                    {{ 'title.identifying'|translate }}
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" ui-sref="home.business.challenge.operation" ui-sref-active="active">
+                    {{ 'title.operation'|translate }}
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" ui-sref="home.business.challenge.distributor" ui-sref-active="active">
+                    {{ 'title.distributor'|translate }}
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" ui-sref="home.business.challenge.subsidiary" ui-sref-active="active">
+                    {{ 'title.subsidiary'|translate }}
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>

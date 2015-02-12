@@ -22,69 +22,70 @@
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="/bower_components/angular-translate/angular-translate.js"></script>
   <script src="/bower_components/angular-animate/angular-animate.js"></script>
+  <script src="/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
   <script src="/app.js"></script>
 </head>
-<body ng-controller="MainCtrl">
-<header class="header">
+<body ng-controller="MainCtrl" ng-class="{ 'body-page-active': !$state.is('home') }">
+<header class="header" height-observer="setHeaderHeight">
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12">
-        <a class="logo" ui-sref="home"><img src="img/logo.png" alt="Kazamax" class="pull-left"/></a>
-        <button class="btn btn-menu pull-left" type="button" ng-click="toggleMenu()" >
+        <a class="logo pull-left" ui-sref="home"><img src="img/logo.png" alt="Kazamax"/></a>
+        <button class="btn btn-menu pull-left" type="button" ng-click="toggleMenu()">
           <span class="glyphicon glyphicon-menu-hamburger"></span>
           <span>{{ 'button.menu'|translate }}</span>
         </button>
         <div ng-controller="TranslationCtrl" class="ng-scope locale-menu">
-          <button class="btn ng-scope pull-right locale-button" ng-show="language === 'en'" ng-click="changeLanguage('pt_BR')">{{ 'button.pt'|translate }}</button>
+          <button class="btn ng-scope pull-right locale-button" ng-click="changeLanguage('pt_BR')" ng-show="language === 'en'" >{{ 'button.pt'|translate }}</button>
           <button class="btn ng-scope pull-right locale-button" ng-click="changeLanguage('en')" ng-show="language === 'pt_BR'">{{ 'button.en'|translate }}</button>
         </div>
       </div>
     </div>
   </div>
 </header>
-<div class="overlay" ng-show="menuOpen">
-  <div class="container-fluid">
-    <div class="row">
-      <nav role="navigation" class="navigation col-sm-8 col-sm-push-4">
+<div class="overlay" ng-show="menuOpen" ng-style="{ marginTop: headerHeight + 'px' }" ng-class="{ active: menuOpen }">
+  <div class="overlay-table">
+    <div class="overlay-row">
+      <div class="overlay-cell cell-33 overlay-left"></div>
+      <nav role="navigation" class="navigation overlay-cell cell-66 overlay-right">
         <div class="clearfix">
           <a class="btn-close pull-right" ng-click="closeMenu()">
             {{ 'button.close'|translate }}
           </a>
         </div>
-
         <ul class="menu">
           <li class="menu-item">
-            <a class="menu-link" ui-sref="business">
+            <a class="menu-link" ng-click="business = !business" ng-init="business=false">
               {{ 'title.about-business'|translate }}
             </a>
-            <ul class="menu">
+            <ul class="menu" collapse="!business">
               <li class="menu-item">
-                <a class="menu-link" ui-sref="business.oportunity">
-                  {{ 'title.oportunity'|translate }}
+                <a class="menu-link" ui-sref="home.business.opportunity">
+                  {{ 'title.opportunity'|translate }}
                 </a>
               </li>
               <li class="menu-item">
-                <a class="menu-link" ui-sref="business.challenge">
+                <a class="menu-link" ng-click="challenge = !challenge" ng-init="challenge=false">
                   {{ 'title.challenge'|translate }}
                 </a>
-                <ul class="menu">
+                <ul class="menu" collapse="!challenge">
                   <li class="menu-item">
-                    <a class="menu-link" ui-sref="business.challenge.identifying">
+                    <a class="menu-link" ui-sref="home.business.challenge.identifying">
                       {{ 'title.identifying'|translate }}
                     </a>
                   </li>
                   <li class="menu-item">
-                    <a class="menu-link" ui-sref="business.challenge.operation">
+                    <a class="menu-link" ui-sref="home.business.challenge.operation">
                       {{ 'title.operation'|translate }}
                     </a>
                   </li>
                   <li class="menu-item">
-                    <a class="menu-link" ui-sref="business.challenge.distributor">
+                    <a class="menu-link" ui-sref="home.business.challenge.distributor">
                       {{ 'title.distributor'|translate }}
                     </a>
                   </li>
                   <li class="menu-item">
-                    <a class="menu-link" ui-sref="business.challenge.subsidiary">
+                    <a class="menu-link" ui-sref="home.business.challenge.subsidiary">
                       {{ 'title.subsidiary'|translate }}
                     </a>
                   </li>
@@ -92,31 +93,30 @@
               </li>
             </ul>
           </li>
-
         </ul>
         <ul class="menu">
           <li class="menu-item">
-            <a class="menu-link" ui-sref="kazamax">
+            <a class="menu-link" ng-click="kazamax = !kazamax" ng-init="kazamax = false">
               {{ 'title.about-kazamax'|translate }}
             </a>
-            <ul class="menu">
+            <ul class="menu" collapse="!kazamax">
               <li class="menu-item">
-                <a class="menu-link" ui-sref="kazamax.services">
+                <a class="menu-link" ui-sref="home.kazamax.services" ui-sref-active="active">
                   {{ 'title.services'|translate }}
                 </a>
               </li>
               <li class="menu-item">
-                <a class="menu-link" ui-sref="kazamax.advantages">
+                <a class="menu-link" ui-sref="home.kazamax.advantages" ui-sref-active="active">
                   {{ 'title.advantages'|translate }}
                 </a>
               </li>
               <li class="menu-item">
-                <a class="menu-link" ui-sref="kazamax.diferentials">
-                  {{ 'title.diferentials'|translate }}
+                <a class="menu-link" ui-sref="home.kazamax.differentials" ui-sref-active="active">
+                  {{ 'title.differentials'|translate }}
                 </a>
               </li>
               <li class="menu-item">
-                <a class="menu-link" ui-sref="kazamax.cases">
+                <a class="menu-link" ui-sref="home.kazamax.cases" ui-sref-active="active">
                   {{ 'title.cases'|translate }}
                 </a>
               </li>
@@ -125,7 +125,7 @@
         </ul>
         <ul class="menu">
           <li class="menu-item">
-            <a class="menu-link" ui-sref="contact">
+            <a class="menu-link" ng-click="scrollToContact()">
               {{ 'title.contact'|translate }}
             </a>
           </li>
@@ -134,10 +134,15 @@
     </div>
   </div>
 </div>
-<div ui-view role="main">
+<div class="modal-page overlay" ng-class="{ active: !$state.is('home') }" ng-show="!$state.is('home')" ng-style="{ marginTop: headerHeight + 'px' }">
+  <a ui-sref="home" class="btn-close">{{ 'button.close'|translate }}</a>
+  <div class="overlay-table">
+    <div class="overlay-row" ui-view="page">
 
+    </div>
+  </div>
 </div>
-
-
+<div ui-view="main" role="main"  class="main-container">
+</div>
 </body>
 </html>
