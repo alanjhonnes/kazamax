@@ -27,9 +27,6 @@ var app = angular.module('kazamax', [
       .state('home', {
         url: '/',
         views: {
-          'page': {
-            templateUrl: 'templates/page.html'
-          },
           'main': {
             templateUrl: 'templates/home.html'
           }
@@ -38,18 +35,18 @@ var app = angular.module('kazamax', [
       .state('home.business', {
         url: 'business',
         views: {
-          'menu@home': {
-            templateUrl: 'templates/business-menu.html'
-          },
-          'content@home': {
-            templateUrl: 'templates/business.the-opportunity.html'
+          'page@': {
+            templateUrl: 'templates/page-simple.html'
           }
         }
       })
       .state('home.business.opportunity', {
         url: '/the-opportunity',
         views: {
-          'content@home': {
+          'icon': {
+            templateUrl: 'templates/icon/opportunity.html'
+          },
+          'content': {
             templateUrl: 'templates/business.the-opportunity.html'
           }
         }
@@ -57,7 +54,10 @@ var app = angular.module('kazamax', [
       .state('home.business.challenge', {
         url: '/the-challenge',
         views: {
-          'content@home': {
+          'icon': {
+            templateUrl: 'templates/icon/challenge.html'
+          },
+          'content': {
             templateUrl: 'templates/business.the-challenge.html'
           }
         }
@@ -65,50 +65,63 @@ var app = angular.module('kazamax', [
       .state('home.business.challenge.identifying', {
         url: '/identifying-the-drivers-of-success',
         views: {
-          'content@home': {
+          'content@home.business': {
             templateUrl: 'templates/business.the-challenge.identifying-the-drivers-of-success.html'
+          },
+          'button@home.business': {
+            templateUrl: 'templates/button/challenge.html'
           }
         }
+
       })
       .state('home.business.challenge.operation', {
         url: '/setting-up-the-operation',
         views: {
-          'content@home': {
+          'content@home.business': {
             templateUrl: 'templates/business.the-challenge.setting-up-the-operation.html'
+          },
+          'button@home.business': {
+            templateUrl: 'templates/button/challenge.html'
           }
         }
       })
       .state('home.business.challenge.distributor', {
         url: '/getting-results-from-your-distributor',
         views: {
-          'content@home': {
+          'content@home.business': {
             templateUrl: 'templates/business.the-challenge.getting-results-from-your-distributor.html'
+          },
+          'button@home.business': {
+            templateUrl: 'templates/button/challenge.html'
           }
         }
       })
       .state('home.business.challenge.subsidiary', {
         url: '/managing-your-subsidiary',
         views: {
-          'content@home': {
+          'content@home.business': {
             templateUrl: 'templates/business.the-challenge.managing-your-subsidiary.html'
+          },
+          'button@home.business': {
+            templateUrl: 'templates/button/challenge.html'
           }
         }
       })
       .state('home.kazamax', {
         url: 'kazamax',
         views: {
-          'menu@home': {
-            templateUrl: 'templates/kazamax-menu.html'
-          },
-          'content@home': {
-            templateUrl: 'templates/kazamax.what-we-offer.html'
+          'page@': {
+            templateUrl: 'templates/page-simple.html'
           }
         }
       })
       .state('home.kazamax.services', {
         url: '/what-we-offer',
         views: {
-          'content@home': {
+          'icon': {
+            templateUrl: 'templates/icon/services.html'
+          },
+          'content': {
             templateUrl: 'templates/kazamax.what-we-offer.html'
           }
         }
@@ -116,7 +129,10 @@ var app = angular.module('kazamax', [
       .state('home.kazamax.advantages', {
         url: '/our-advantages',
         views: {
-          'content@home': {
+          'icon': {
+            templateUrl: 'templates/icon/advantages.html'
+          },
+          'content': {
             templateUrl: 'templates/kazamax.our-advantages.html'
           }
         }
@@ -124,37 +140,24 @@ var app = angular.module('kazamax', [
       .state('home.kazamax.differentials', {
         url: '/what-sets-us-apart',
         views: {
-          'content@home': {
+          'icon': {
+            templateUrl: 'templates/icon/differentials.html'
+          },
+          'content': {
             templateUrl: 'templates/kazamax.what-sets-us-apart.html'
           }
         }
       })
-      .state('home.kazamax.cases', {
-        url: '/cases',
+      .state('home.kazamax.practices', {
+        url: '/practices',
         views: {
-          'content@home': {
-            templateUrl: 'templates/kazamax.cases.html'
+          'icon': {
+            templateUrl: 'templates/icon/practices.html'
+          },
+          'content': {
+            templateUrl: 'templates/kazamax.practices.html'
           }
         }
-      })
-      .state('home.kazamax.cases.item', {
-        url: '/:item',
-        views: {
-          'content@home': {
-            templateUrl: 'templates/kazamax.cases.item.html'
-          }
-        },
-        controller: ['$scope', '$scopeParams', function($scope, $scopeParams){
-
-        }]
-      })
-      .state('home.contact', {
-        url: '/contact',
-        views: {
-
-        },
-        controller: ['$scope', '$scopeParams', function($scope, $scopeParams){
-        }]
       })
   }])
 
@@ -197,8 +200,41 @@ var app = angular.module('kazamax', [
       $scope.setHeaderHeight = function(height){
         $scope.headerHeight = height;
       }
+    }])
 
-
+    .controller('ContactController', ['$scope', '$http', function($scope, $http){
+      $scope.result = 'hidden';
+      $scope.resultMessage;
+      $scope.formData; //formData is an object holding the name, email, subject, and message
+      $scope.submitButtonDisabled = false;
+      $scope.submitted = false; //used so that form errors are shown only after the form has been submitted
+      $scope.submit = function(contactform) {
+        $scope.submitted = true;
+        $scope.submitButtonDisabled = true;
+        if (contactform.$valid) {
+          $http({
+            method  : 'POST',
+            url     : 'contact-form.php',
+            data    : $.param($scope.formData),  //param method from jQuery
+            headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  //set the headers so angular passing info as form data (not request payload)
+          }).success(function(data){
+            console.log(data);
+            if (data.success) { //success comes from the return json object
+              $scope.submitButtonDisabled = true;
+              $scope.resultMessage = data.message;
+              $scope.result='bg-success';
+            } else {
+              $scope.submitButtonDisabled = false;
+              $scope.resultMessage = data.message;
+              $scope.result='bg-danger';
+            }
+          });
+        } else {
+          $scope.submitButtonDisabled = false;
+          $scope.resultMessage = 'Please fill out all the fields.';
+          $scope.result='bg-danger';
+        }
+      }
     }])
 
     .directive('heightObserver', ['$window', function($window){
@@ -229,6 +265,7 @@ var app = angular.module('kazamax', [
       'button.more-info': 'More info',
       'button.close': 'Close',
       'button.submit': 'Submit',
+      'button.back': 'Back',
       'title.about-business': 'About your business in Brazil',
       'title.opportunity': 'The Opportunity',
       'title.challenge': 'The Challenge',
@@ -240,7 +277,7 @@ var app = angular.module('kazamax', [
       'title.services': 'What we offer',
       'title.advantages': 'Our advantages',
       'title.differentials': 'What sets us apart',
-      'title.cases': 'Cases',
+      'title.practices': 'Best Practices',
       'title.contact': 'Contact',
       'text.partnership': 'Partnership',
       'text.consulting': 'Consulting',
@@ -248,11 +285,11 @@ var app = angular.module('kazamax', [
       'text.governance': 'Governance',
       'text.home-intro': 'We help companies <span class="blue">successfully</span> navigate the Brazilian market and achieve better results.',
       'text.opportunity': 'The 7th largest economy in the world, Brazil is a land of opportunities for many global players:',
-      'text.challenge': 'Brazil can be a challenge for companies looking to take advantage of the many opportunities the country provides.',
+      'text.challenge': 'Brazil can be a challenge for companies seeking to take advantage of the many opportunities the country provides.',
       'text.services': 'Learn what Kazamax can do for you: Partnership, Consulting, Execution, Governance.',
       'text.advantages': 'Find out more about the experience we bring to the table.',
       'text.differentials': 'Kazamax is more than an advisor. Here\'s what makes us different.',
-      'text.cases': 'Learn more about some of our most interesting cases.',
+      'text.practices': 'Some of the things you might want to consider when starting a new company.',
       'contact.form-legend': 'Need more info? Contact us.',
       'contact.form.name': 'Name',
       'contact.form.email': 'Email',
@@ -267,12 +304,12 @@ var app = angular.module('kazamax', [
       '</ul>' +
       '<p>In global ranking, Brazil is:</p>' +
       '<ul>' +
-      '<li>#1 for Casino, Santander, Fiat, Avon, 5àSec</li>' +
-      '<li>#2 for Facebook, C&A</li>' +
-      '<li>#3 for VW, Nivea and Nike</li>' +
-      '<li>#4 for Hyundai, Nestlé, Bayer, Subway, Coca-Cola, Twitter</li>' +
+      '<li>#1 for Casino, Santander, Fiat, Avon, 5àSec...</li>' +
+      '<li>#2 for Facebook, C&A...</li>' +
+      '<li>#3 for VW, Nivea and Nike...</li>' +
+      '<li>#4 for Hyundai, Nestlé, Bayer, Subway, Coca-Cola, Twitter...</li>' +
       '</ul>',
-      'page.challenge': '<h3><strong>Brazil</strong> can be a challenge for companies looking to take advantage of the many opportunities the country provides. Many companies hesitate to enter the market or face difficulties trying to establish their businesses. Our business is to help companies successfully navigate the Brazilian market and achieve better results.</h3>',
+      'page.challenge': '<h3><strong>Brazil</strong> can be a challenge for companies looking to take advantage of the many opportunities the country provides. Many companies hesitate to enter the market or face difficulties trying to establish their businesses. Maybe you recognize some of these common challenges:</h3>',
       'page.challenge.identifying': '<h3>Initially the key challenge might be to have a clear understanding of the drivers of success.</h3>' +
       '<ul>' +
       '<li>What is the size of the market opportunity?</li>' +
@@ -322,28 +359,28 @@ var app = angular.module('kazamax', [
       'page.kazamax': '',
       'page.kazamax.services': '<h3>Here’s what Kazamax can do for you:</h3>' +
       '<div class="col-sm-3 col-xs-6">' +
-      '<img src="/img/partnership.png" alt="" class="img-responsive"/>' +
+      '<h3>Partnership</h3>' +
       '<p>' +
       'We join forces do explore the market potential together.<br>' +
       '<span class="examples">Examples: Representation, Joint-Venture, Strategic Cooperation.</span>' +
       '</p>' +
       '</div>' +
       '<div class="col-sm-3 col-xs-6">' +
-        '<img src="/img/consulting.png" alt="" class="img-responsive"/>' +
+      '<h3>Consulting </h3>' +
       '<p>' +
       'We provide insight and advice on critical business issues.<br>' +
       '<span class="examples">Examples: Market Analysis, Business Plans, Operational Strategy.</span>' +
       '</p>' +
       '</div>' +
       '<div class="col-sm-3 col-xs-6">' +
-        '<img src="/img/partnership.png" alt="" class="img-responsive"/>' +
+        '<h3>Execution</h3>' +
       '<p>' +
       'You are already established in Brazil but is facing execution challenges.<br>' +
       '<span class="examples">Examples: Workshops, Business Coaching, M&A.</span>' +
       '</p>' +
       '</div>' +
       '<div class="col-sm-3 col-xs-6">' +
-        '<img src="/img/partnership.png" alt="" class="img-responsive"/>' +
+        '<h3>Governance</h3>' +
       '<p>' +
       'You are already established in Brazil but feel the need to increase control.<br>' +
       '<span class="examples">Examples: Governance aaS, Advisory Board.</span>' +
@@ -365,7 +402,15 @@ var app = angular.module('kazamax', [
       '<li>value hands-on business experience, as nice reports are no guarantee of tangible results. </li>' +
       '<li>align our incentives with our clients’, by sharing investments, results and risks. </li>' +
       '</ul>',
-      'page.kazamax.cases': '<h3>Comming soon.</h3>'
+      'page.kazamax.practices': '<p><em>“I participated in two startups during high school and continued with my first international startup before going to University. Over the years I have taken part in approximately 25 startups and business ventures, as a partner, consultant or employee. I have probably made more mistakes than most…and for this I am grateful as I have learnt many valuable lessons. This is a selection of some of the best practices I have identified. Many of them seem obvious, but frequently startups forget to apply them.”</em><br><strong>Johan Fager, Founding Partner of Kazamax </strong></p>' +
+      '<p><strong>Assemble the Dream Team</strong> – Some companies’ don´t give adequate attention to recruitment and to building up the right local team. Certain executives actually recruit the first persons they find and then hope they will “pick it up as they go”. <em class="emphasis">Best Practice:</em> Recruiting the right people is a key task when starting a new business. When you have found the individuals you should dedicate considerable time to building a well-functioning team, developing the team members, and keeping them focused and motivated.</p>' +
+      '<p><strong>Setting up for success</strong> - Some companies’ work and try hard, but never get decent results. This might be due to an inadequate setup, with limitations in structure, resources, people, prices, etc. making it hard to push forward. <em class="emphasis">Best Practice:</em> Any business needs the right setup to succeed. Make sure you have the essential components in place to be able to compete effectively, such as price, product, local stock, promotion, delivery times, distribution, etc.</p>' +
+      '<p><strong>Throw away the Gantt chart</strong> – You have a plan for the startup, but things are running late, while the costs are ticking away. Plans are often sequential and based on traditional methods such as Gantt charts, which give a false sense of control in a quickly changing environment. <em class="emphasis">Best Practice:</em> Planning needs to be flexible, based on priorities, done as a team, with constant re-planning and continuously incorporating what the tem is learning. Methods like Lean thinking or Scrum, helps the team move along at a much quicker speed during the startup.</p>' +
+      '<p><strong>Execute</strong> – You know what to do, but can´t get it done fast enough. There are obstacles, lack of resources, changes, etc., getting in the way and consequently the results come in below expectations. <em class="emphasis">Best Practice:</em> Execution is not only about taking the “to do” list and start ticking off the items as fast as you can. All involved need to be aligned to the objective and the way forward. The team should also be committed to the end result, having fun, working together, have the required competence and adequate resources.</p>' +
+      '<p><strong>Sell, sell sell!!!</strong> – Why aren´t we making the numbers? Operational and administrative issues seem to steal too much time from business development. Management and sales people are spending most of their time in the office.  <em class="emphasis">Best Practice:</em> Review your daily activities, prioritize and find ways (outsource, delegate, postpone, eliminate, etc.) to have enough time for sales activities. When you have found enough time, defend that time as if your life depended on it (because it does), while developing your sales cadence and your sales pipeline.</p>' +
+      '<p><strong>Focus on the essential</strong> – There are so many things to do in a startup and multitasking normally becomes the reality. When trying to move 10 tasks forward at the same time, you will probably finish 2 tasks, while 3 more items are added to the list. <em class="emphasis">Best Practice:</em> Prioritize and identify the most essential activities, then solve them one by one. Multitasking slows you down and must be avoided in order to make progress on the most essential activities for the business.</p>' +
+      '<p><strong>Know your customer</strong> – Yes, we all believe in the importance of customer focus and we say things like “The customer is always right…even when he is wrong”. Nevertheless, for many companies’ customer focus has not been properly understood or implemented. <em class="emphasis">Best Practice:</em> Take it to the next level. Identify how your client sees the business, his goals, what he values, main concerns and which are the key purchasing criteria. Then build trust and help the client move towards his goals (while you move the sales process forward).</p>' +
+      '<p><strong>Watch your back</strong> – Some companies don\'t have adequate control of their operation, the risks and legal issues. This is easy to forget when focus is on growing the business, but the consequences can be massive if risks are not managed. <em class="emphasis">Best Practice:</em> Make sure to set up a simple Governance process, controlling the main risks (Tax, HR, Legal, etc.) while also reviewing Business issues on a regular basis.</p>'
 
 
     });
@@ -378,10 +423,11 @@ var app = angular.module('kazamax', [
     'button.more-info': 'Mais informações',
     'button.close': 'Fechar',
     'button.submit': 'Enviar',
+    'button.back': 'Voltar',
     'title.about-business': 'Sobre o seu negócio no Brasil',
     'title.opportunity': 'A Oportunidade',
     'title.challenge': 'O Desafio',
-    'title.identifying': 'Identificando os geradores de sucesso.',
+    'title.identifying': 'Identificando os geradores de sucesso',
     'title.operation': 'Organizando a operação',
     'title.distributor': 'Obtendo resultados do seu Distribuidor',
     'title.subsidiary': 'Gerenciando a sua Subsidiaria',
@@ -389,7 +435,7 @@ var app = angular.module('kazamax', [
     'title.services': 'O que oferecemos',
     'title.advantages': 'Nossas vantagens',
     'title.differentials': 'O que nos diferencia',
-    'title.cases': 'Cases',
+    'title.practices': 'Melhores Práticas',
     'title.contact': 'Contato',
     'text.partnership': 'Parcerias',
     'text.consulting': 'Consultoria',
@@ -401,7 +447,7 @@ var app = angular.module('kazamax', [
     'text.services': 'Descubra o que a Kazamax pode fazer por você: Parcerias, Consultoria, Execução e Governancia.',
     'text.advantages': 'Descubra mais sobre a experiência que oferecemos.',
     'text.differentials': 'Kazamax é mais do que uma conselheira. Aqui está o que nos torna diferente.',
-    'text.cases': 'Descubra sobre alguns de nossos cases mais interessantes.',
+    'text.practices': 'Alguns pontos que você deve considerar ao começar uma nova empresa.',
     'contact.form-legend': 'Precisa de mais informação? Entre em contato.',
     'contact.form.name': 'Nome',
     'contact.form.email': 'Email',

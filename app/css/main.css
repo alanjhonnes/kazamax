@@ -5,6 +5,11 @@ body {
 a {
   cursor: pointer;
 }
+[ng\:cloak],
+[ng-cloak],
+.ng-cloak {
+  display: none !important;
+}
 .body-page-active {
   overflow: hidden;
 }
@@ -30,6 +35,9 @@ a {
   padding: 10px;
   float: left;
 }
+.logo img {
+  max-height: 80px;
+}
 .navigation {
   font-size: 40px;
   color: #ffffff;
@@ -40,15 +48,25 @@ a {
 }
 .menu-link {
   color: #ffffff;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
 }
 .menu-link:hover,
 .menu-link:active,
 .menu-link:focus {
-  color: inherit;
+  color: #bfbfbf;
   text-decoration: none;
 }
+.menu-link.active {
+  color: #bfbfbf;
+  line-height: 130%;
+  font-size: 130%;
+}
 .btn-menu {
-  margin-top: 80px;
+  margin-top: 60px;
 }
 .btn-close {
   width: 150px;
@@ -61,17 +79,61 @@ a {
   border-width: 0;
   padding-top: 6px;
   padding-left: 4px;
+  font-weight: 700;
+  font-size: 12px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-image: url('../img/btn-close.png');
+  color: #ffffff;
+}
+.btn-close:hover,
+.btn-close:active,
+.btn-close:focus {
+  color: #004d88;
+  text-decoration: none;
+}
+.btn-close:hover,
+.btn-close:active,
+.btn-close:focus {
+  color: #ffffff;
+  text-decoration: none;
+}
+.modal-page .btn-close {
+  background-image: url('../img/btn-close-grey.png');
+  color: #004d88;
+}
+.btn-back {
+  width: 150px;
+  height: 85px;
+  text-align: left;
+  cursor: pointer;
+  display: block;
+  position: relative;
+  border-style: none;
+  border-width: 0;
+  padding-top: 6px;
+  padding-left: 4px;
+  font-weight: 700;
   font-size: 12px;
   color: #ffffff;
   background-color: transparent;
   background-image: url('../img/btn-close.png');
   background-repeat: no-repeat;
   background-position: bottom right;
+  background-image: url('../img/btn-back.png');
+  color: #004d88;
 }
-.btn-close:hover,
-.btn-close:active,
-.btn-close:focus {
-  color: #ffffff;
+.btn-back:hover,
+.btn-back:active,
+.btn-back:focus {
+  color: #004d88;
+  text-decoration: none;
+}
+.btn-back:hover,
+.btn-back:active,
+.btn-back:focus {
+  color: #004d88;
   text-decoration: none;
 }
 .locale-button {
@@ -116,6 +178,9 @@ section {
   border-top-style: solid;
   border-top-color: #878786;
 }
+section:first-child {
+  border-top-width: 0px;
+}
 .topic-heading {
   color: #004d88;
 }
@@ -148,35 +213,6 @@ section {
 }
 .contact-form textarea {
   max-width: 100%;
-}
-.page-menu-container {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-.page-content-container {
-  background-color: #004d88;
-}
-.modal-page {
-  position: fixed;
-  z-index: 7;
-  color: #ffffff;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-}
-.modal-page .menu {
-  font-size: 100%;
-}
-.modal-page .menu:first-child {
-  padding-left: 0px;
-}
-.modal-page .btn-close {
-  position: absolute;
-  right: 20px;
-  z-index: 12;
-}
-.page-content {
-  padding-top: 40px;
-  padding-bottom: 40px;
 }
 @media (max-width: 768px) {
   .logo img {
@@ -257,4 +293,104 @@ section {
 }
 .cell-75 {
   width: 75%;
+}
+.emphasis {
+  display: inline-block;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(0, 0, 0, 0.6);
+  border-bottom-width: 1px;
+}
+.page-menu-container {
+  background-color: #ffffff;
+  color: rgba(0, 0, 0, 0.6);
+}
+.page-content-container {
+  background-color: #ffffff;
+  color: rgba(0, 0, 0, 0.6);
+}
+.modal-page {
+  background-color: #ffffff;
+  position: fixed;
+  z-index: 15;
+  color: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 80%;
+  top: 10%;
+  overflow: auto;
+  -webkit-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 16px 1px rgba(0, 0, 0, 0.75);
+}
+.modal-page .menu {
+  font-size: 100%;
+}
+.modal-page .menu:first-child {
+  padding-left: 0px;
+}
+.modal-page .page-title {
+  color: #004d88;
+}
+.modal-page.ng-hide-add,
+.modal-page.ng-hide-remove {
+  transition: 0s linear all;
+}
+.modal-page.ng-hide {
+  -webkit-transform: translateY(-20%);
+  transform: translateY(-20%);
+  opacity: 0;
+}
+.modal-page.ng-hide-add.ng-hide-add-active,
+.modal-page.ng-hide-remove.ng-hide-remove-active {
+  -webkit-transition: all 0.4s ease-out;
+  -moz-transition: all 0.4s ease-out;
+  -ms-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+}
+.modal-page .btn-close {
+  position: absolute;
+  right: 20px;
+  z-index: 12;
+}
+.modal-page .btn-back {
+  position: absolute;
+  right: 20px;
+  z-index: 12;
+}
+.page-content {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.modal-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.modal-inner.ng-enter,
+.modal-inner.ng-leave {
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+.modal-inner.ng-enter {
+  opacity: 0;
+}
+.modal-inner.ng-enter-active {
+  opacity: 1;
+  position: absolute;
+}
+.modal-inner.ng-leave {
+  opacity: 1;
+  position: absolute;
+}
+.modal-inner.ng-leave-active {
+  opacity: 0;
+  position: absolute;
+}
+.cell-align-middle {
+  vertical-align: middle;
+}
+.cell-align-top {
+  vertical-align: top;
 }

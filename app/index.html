@@ -101,23 +101,23 @@
             </a>
             <ul class="menu" collapse="!kazamax">
               <li class="menu-item">
-                <a class="menu-link" ui-sref="home.kazamax.services" ui-sref-active="active">
+                <a class="menu-link" ui-sref="home.kazamax.services">
                   {{ 'title.services'|translate }}
                 </a>
               </li>
               <li class="menu-item">
-                <a class="menu-link" ui-sref="home.kazamax.advantages" ui-sref-active="active">
+                <a class="menu-link" ui-sref="home.kazamax.advantages">
                   {{ 'title.advantages'|translate }}
                 </a>
               </li>
               <li class="menu-item">
-                <a class="menu-link" ui-sref="home.kazamax.differentials" ui-sref-active="active">
+                <a class="menu-link" ui-sref="home.kazamax.differentials">
                   {{ 'title.differentials'|translate }}
                 </a>
               </li>
               <li class="menu-item">
-                <a class="menu-link" ui-sref="home.kazamax.cases" ui-sref-active="active">
-                  {{ 'title.cases'|translate }}
+                <a class="menu-link" ui-sref="home.kazamax.practices">
+                  {{ 'title.practices'|translate }}
                 </a>
               </li>
             </ul>
@@ -134,13 +134,8 @@
     </div>
   </div>
 </div>
-<div class="modal-page overlay" ng-class="{ active: !$state.is('home') }" ng-show="!$state.is('home')" ng-style="{ marginTop: headerHeight + 'px' }">
-  <a ui-sref="home" class="btn-close">{{ 'button.close'|translate }}</a>
-  <div class="overlay-table">
-    <div class="overlay-row" ui-view="page">
-
-    </div>
-  </div>
+<div class="modal-page" ng-show="!$state.is('home')">
+    <div class="modal-inner" ui-view="page"></div>
 </div>
 <div ui-view="main" role="main"  class="main-container">
 </div>

@@ -9,6 +9,10 @@ a {
   cursor: pointer;
 }
 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
 .body-page-active {
   overflow: hidden;
 }
@@ -37,6 +41,9 @@ a {
 .logo {
   padding: 10px;
   float: left;
+  img {
+    max-height: 80px;
+  }
 }
 
 .navigation {
@@ -56,17 +63,27 @@ a {
 
 .menu-link {
   color: @navigation-color;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
   &:hover, &:active, &:focus {
-    color: inherit;
+    color: darken(@navigation-color, 25%);
     text-decoration: none;
+  }
+  &.active {
+    color: darken(@navigation-color, 25%);
+    line-height: 130%;
+    font-size: 130%;
   }
 }
 
 .btn-menu {
-  margin-top: 80px;
+  margin-top: 60px;
 }
 
-.btn-close {
+.btn-navigation(){
   width: 150px;
   height: 85px;
   text-align: left;
@@ -77,6 +94,7 @@ a {
   border-width: 0;
   padding-top: 6px;
   padding-left: 4px;
+  font-weight: 700;
   font-size: 12px;
   color: #ffffff;
   background-color: transparent;
@@ -84,7 +102,32 @@ a {
   background-repeat: no-repeat;
   background-position: bottom right;
   &:hover, &:active, &:focus {
+    color: @color-blue;
+    text-decoration: none;
+  }
+}
+
+.btn-close {
+  .btn-navigation;
+  background-image: url('../img/btn-close.png');
+  color: #ffffff;
+  &:hover, &:active, &:focus {
     color: #ffffff;
+    text-decoration: none;
+  }
+}
+
+.modal-page .btn-close {
+  background-image: url('../img/btn-close-grey.png');
+  color: @color-blue;
+}
+
+.btn-back {
+  .btn-navigation();
+  background-image: url('../img/btn-back.png');
+  color: @color-blue;
+  &:hover, &:active, &:focus {
+    color: @color-blue;
     text-decoration: none;
   }
 }
@@ -139,6 +182,9 @@ section {
   border-top-width: 1px;
   border-top-style: solid;
   border-top-color: @color-grey;
+  &:first-child {
+    border-top-width: 0px;
+  }
 }
 
 .topic-heading {
@@ -182,48 +228,6 @@ section {
   }
 }
 
-.page-container {
-}
-
-.page-menu-container {
-  background-color: @color-dark;
-}
-
-.page-content-container {
-  background-color: @color-blue;
-}
-
-.modal-page {
-
-  position: fixed;
-  z-index: 7;
-  color: #ffffff;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-
-  .menu {
-    font-size: 100%;
-    &:first-child {
-      padding-left: 0px;
-    }
-  }
-
-
-
-
-  .btn-close {
-    position: absolute;
-    right: 20px;
-    z-index: 12;
-  }
-  
-}
-
-.page-content {
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
 
 @media (max-width: 768px) {
   .logo {
@@ -263,6 +267,7 @@ section {
     -webkit-transform: translateX(0%);
     transform: translateX(0%);
   }
+
   &.ng-hide-add.ng-hide-add-active,
   &.ng-hide-remove.ng-hide-remove-active {
     -webkit-transition: all 0.4s ease-out;
@@ -322,4 +327,137 @@ section {
 
 .cell-75 {
   width: 75%;
+}
+
+.emphasis {
+  display: inline-block;
+  border-bottom-style: solid;
+  border-bottom-color: @color-dark;
+  border-bottom-width: 1px;
+}
+
+
+.page-container {
+
+}
+
+.page-menu-container {
+  background-color: #ffffff;
+  color: @color-dark;
+}
+
+.page-content-container {
+  background-color: #ffffff;
+  color: @color-dark;
+}
+
+.modal-page {
+  background-color: #ffffff;
+  position: fixed;
+  z-index: 15;
+  color: @color-dark;
+  width: 100%;
+  height: 80%;
+  top: 10%;
+  overflow: auto;
+  -webkit-box-shadow: 0px 0px 16px 1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 16px 1px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 16px 1px rgba(0,0,0,0.75);
+
+  .menu {
+    font-size: 100%;
+    &:first-child {
+      padding-left: 0px;
+    }
+  }
+
+  .page-title {
+    color: @color-blue;
+  }
+
+  &.active {
+
+  }
+  &.ng-hide-add, &.ng-hide-remove {
+    transition: 0s linear all;
+  }
+
+  &.ng-hide {
+    -webkit-transform: translateY(-20%);
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+
+  &.ng-hide-add.ng-hide-add-active,
+  &.ng-hide-remove.ng-hide-remove-active {
+    -webkit-transition: all .4s ease-out;
+    -moz-transition: all .4s ease-out;
+    -ms-transition: all .4s ease-out;
+    -o-transition: all .4s ease-out;
+    transition: all .4s ease-out;
+  }
+  &.ng-hide-add.ng-hide-add-active {
+
+  }
+  &.ng-hide-remove.ng-hide-remove-active {
+
+  }
+  .btn-close {
+    position: absolute;
+    right: 20px;
+    z-index: 12;
+  }
+
+  .btn-back {
+    position: absolute;
+    right: 20px;
+    z-index: 12;
+  }
+
+}
+
+.page-content {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.modal-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.modal-inner.ng-enter, .modal-inner.ng-leave {
+  -webkit-transition: all .5s ease-out;
+  -moz-transition: all .5s ease-out;
+  -o-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+
+.modal-inner.ng-enter {
+
+  opacity: 0;
+}
+
+.modal-inner.ng-enter-active {
+  opacity: 1;
+  position: absolute;
+}
+
+.modal-inner.ng-leave {
+  opacity: 1;
+  position: absolute;
+}
+
+.modal-inner.ng-leave-active {
+  opacity: 0;
+  position: absolute;
+}
+
+.cell-align-middle {
+  vertical-align: middle;
+}
+
+.cell-align-top {
+  vertical-align: top;
 }

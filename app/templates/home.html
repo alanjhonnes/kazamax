@@ -12,7 +12,7 @@
                     <li>{{ 'text.execution'|translate }}</li>
                     <li>{{ 'text.governance'|translate }}</li>
                 </ul>
-                <a class="btn-more-info" ui-sref="home">{{ 'button.more-info'|translate }}</a>
+                <a class="btn-more-info" ui-sref="home.kazamax.services">{{ 'button.more-info'|translate }}</a>
             </div>
         </div>
     </div>
@@ -79,43 +79,43 @@
                 <a class="btn-read-more" ui-sref="home.kazamax.differentials">{{ 'button.read-more'|translate }}</a>
             </div>
             <div class="col-sm-3">
-                <img src="img/icon-cases.png" alt="" class="img-responsive"/>
-                <h5 class="topic-heading">{{ 'title.cases'|translate }}</h5>
+                <img src="img/icon-practices.png" alt="" class="img-responsive"/>
+                <h5 class="topic-heading">{{ 'title.practices'|translate }}</h5>
                 <p>
-                    {{ 'text.cases'|translate }}
+                    {{ 'text.practices'|translate }}
                 </p>
-                <a class="btn-read-more" ui-sref="home.kazamax.cases">{{ 'button.read-more'|translate }}</a>
+                <a class="btn-read-more" ui-sref="home.kazamax.practices">{{ 'button.read-more'|translate }}</a>
             </div>
         </div>
     </div>
 </section>
 
-<section class="contact-page" ng-style="{ minHeight: wHeight * 0.8 + 'px' }">
+<section class="contact-page" ng-controller="ContactController" ng-style="{ minHeight: wHeight * 0.8 + 'px' }">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
                 <h1>{{ 'title.contact'|translate }}</h1>
                 <div class="col-sm-6 col-sm-push-3">
-                    <form action="" method="POST" role="form" class="contact-form">
+                    <form ng-submit="submit(contactform)" name="contactform" method="post" role="form" class="contact-form">
                         <legend>{{ 'contact.form-legend'|translate }}</legend>
-
-                        <div class="form-group">
-                            <label for="input-name" class="sr-only">{{ 'contact.form.name'|translate }}</label>
-                            <input type="text" class="form-control" name="name" id="input-name" placeholder="{{ 'contact.form.name'|translate }}">
+                        <div class="form-group" ng-class="{ 'has-error': contactform.inputName.$invalid && submitted }">
+                            <label for="inputName" class="sr-only">{{ 'contact.form.name'|translate }}</label>
+                            <input ng-model="formData.inputName" type="text" class="form-control" name="inputName" id="inputName" placeholder="{{ 'contact.form.name'|translate }}" required>
                         </div>
-                        <div class="form-group">
-                            <label for="input-name" class="sr-only">{{ 'contact.form.email'|translate }}</label>
-                            <input type="text" class="form-control" name="name" id="input-email" placeholder="{{ 'contact.form.email'|translate }}">
+                        <div class="form-group" ng-class="{ 'has-error': contactform.inputEmail.$invalid && submitted }">
+                            <label for="inputEmail" class="sr-only">{{ 'contact.form.email'|translate }}</label>
+                            <input ng-model="formData.inputEmail" type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="{{ 'contact.form.email'|translate }}">
                         </div>
-                        <div class="form-group">
-                            <label for="input-name" class="sr-only">{{ 'contact.form.phone'|translate }}</label>
-                            <input type="text" class="form-control" name="name" id="input-phone" placeholder="{{ 'contact.form.phone'|translate }}">
+                        <div class="form-group" ng-class="{ 'has-error': contactform.inputPhone.$invalid && submitted }">
+                            <label for="inputPhone" class="sr-only">{{ 'contact.form.phone'|translate }}</label>
+                            <input ng-model="formData.inputPhone" type="text" class="form-control" name="inputPhone" id="inputPhone" placeholder="{{ 'contact.form.phone'|translate }}">
                         </div>
-                        <div class="form-group">
-                            <textarea name="message" class="form-control" placeholder="{{ 'contact.form.message'|translate }}"></textarea>
+                        <div class="form-group" ng-class="{ 'has-error': contactform.inputMessage.$invalid && submitted }">
+                            <textarea ng-model="formData.inputMessage" name="inputMessage" class="form-control" placeholder="{{ 'contact.form.message'|translate }}"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">{{ 'button.submit'|translate }}</button>
+                        <button type="submit" ng-disabled="submitButtonDisabled" class="btn btn-primary">{{ 'button.submit'|translate }}</button>
                     </form>
+                    <p ng-class="result" style="padding: 15px; margin: 0;">{{ resultMessage }}</p>
                 </div>
             </div>
         </div>
