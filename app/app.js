@@ -275,6 +275,7 @@ var app = angular.module('kazamax', [
       'title.subsidiary': 'Managing your Subsidiary',
       'title.about-kazamax': 'About Kazamax',
       'title.services': 'What we offer',
+      'title.services2': 'Which of our offerings makes sense to you?',
       'title.advantages': 'Our advantages',
       'title.differentials': 'What sets us apart',
       'title.practices': 'Best Practices',
@@ -357,33 +358,48 @@ var app = angular.module('kazamax', [
       '<li>Control issues.</li>' +
       '</ul>',
       'page.kazamax': '',
-      'page.kazamax.services': '<h3>Here’s what Kazamax can do for you:</h3>' +
+      'page.kazamax.services':
       '<div class="col-sm-3 col-xs-6">' +
-      '<h3>Partnership</h3>' +
+      '<h3 class="service-title">Partnership</h3>' +
       '<p>' +
-      'We join forces do explore the market potential together.<br>' +
-      '<span class="examples">Examples: Representation, Joint-Venture, Strategic Cooperation.</span>' +
+      'We join forces to explore the market potential together. The partnership can have different models as for example:<br>' +
+      '<ul>' +
+      '<li><strong>Representation</strong>. Kazamax represents your company in Brazil and provides a local structure.</li>' +
+      '<li><strong>Joint Venture</strong>. We set up a new company, own it together and operate it together.</li>' +
+      '<li><strong>Strategic cooperation</strong>. We cooperate in certain areas.</li>' +
+      '</ul>' +
       '</p>' +
       '</div>' +
       '<div class="col-sm-3 col-xs-6">' +
-      '<h3>Consulting </h3>' +
+      '<h3 class="service-title">Consulting</h3>' +
       '<p>' +
-      'We provide insight and advice on critical business issues.<br>' +
-      '<span class="examples">Examples: Market Analysis, Business Plans, Operational Strategy.</span>' +
+      'Consulting services to provide insight and advice on issues such as:<br>' +
+      '<ul>' +
+      '<li><strong>The market</strong>. Market studies, business plan, etc.</li>' +
+      '<li><strong>The challenges</strong>. How to address the critical business issues.</li>' +
+      '<li><strong>The business set-up</strong>. Developing a correct set-up considering sales potential, risks and available resources.</li>' +
+      '</ul>' +
       '</p>' +
       '</div>' +
       '<div class="col-sm-3 col-xs-6">' +
-        '<h3>Execution</h3>' +
+      '<h3 class="service-title">Execution</h3>' +
       '<p>' +
-      'You are already established in Brazil but is facing execution challenges.<br>' +
-      '<span class="examples">Examples: Workshops, Business Coaching, M&A.</span>' +
+      'You are established in Brazil but face challenges with execution, results or support to local management. We can provide  execution support through:<br>' +
+      '<ul>' +
+      '<li><strong>Workshops</strong>. Facilitate the development of business plans and execution plans in workshops.</li>' +
+      '<li><strong>Business Coaching</strong>. Assisting local management to perform better by providing continuous coaching and advice.</li>' +
+      '<li><strong>M&A</strong>. Assisting in acquisition, mergers and exits.</li>' +
+      '</ul>' +
       '</p>' +
       '</div>' +
       '<div class="col-sm-3 col-xs-6">' +
-        '<h3>Governance</h3>' +
+      '<h3 class="service-title">Governance</h3>' +
       '<p>' +
-      'You are already established in Brazil but feel the need to increase control.<br>' +
-      '<span class="examples">Examples: Governance aaS, Advisory Board.</span>' +
+      'You are already established in Brazil but feel the need to increase control, reduce risk and “be on top” of the business. We can provide support with:<br>' +
+      '<ul>' +
+      '<li><strong>Governance as a Service</strong>. Assisting foreign based managers by providing local expertise, increase control, reduce risk, etc.in the local subsidiary.</li>' +
+      '<li><strong>Advisory Board</strong>. Acting as a Member or setting up an Advisory  Board to get needed expertise, larger network and improved Governance.</li>' +
+      '</ul>' +
       '</p>' +
       '</div>',
       'page.kazamax.advantages': '<ul>' +
@@ -403,16 +419,38 @@ var app = angular.module('kazamax', [
       '<li>align our incentives with our clients’, by sharing investments, results and risks. </li>' +
       '</ul>',
       'page.kazamax.practices': '<p><em>“I participated in two startups during high school and continued with my first international startup before going to University. Over the years I have taken part in approximately 25 startups and business ventures, as a partner, consultant or employee. I have probably made more mistakes than most…and for this I am grateful as I have learnt many valuable lessons. This is a selection of some of the best practices I have identified. Many of them seem obvious, but frequently startups forget to apply them.”</em><br><strong>Johan Fager, Founding Partner of Kazamax </strong></p>' +
-      '<p><strong>Assemble the Dream Team</strong> – Some companies’ don´t give adequate attention to recruitment and to building up the right local team. Certain executives actually recruit the first persons they find and then hope they will “pick it up as they go”. <em class="emphasis">Best Practice:</em> Recruiting the right people is a key task when starting a new business. When you have found the individuals you should dedicate considerable time to building a well-functioning team, developing the team members, and keeping them focused and motivated.</p>' +
-      '<p><strong>Setting up for success</strong> - Some companies’ work and try hard, but never get decent results. This might be due to an inadequate setup, with limitations in structure, resources, people, prices, etc. making it hard to push forward. <em class="emphasis">Best Practice:</em> Any business needs the right setup to succeed. Make sure you have the essential components in place to be able to compete effectively, such as price, product, local stock, promotion, delivery times, distribution, etc.</p>' +
-      '<p><strong>Throw away the Gantt chart</strong> – You have a plan for the startup, but things are running late, while the costs are ticking away. Plans are often sequential and based on traditional methods such as Gantt charts, which give a false sense of control in a quickly changing environment. <em class="emphasis">Best Practice:</em> Planning needs to be flexible, based on priorities, done as a team, with constant re-planning and continuously incorporating what the tem is learning. Methods like Lean thinking or Scrum, helps the team move along at a much quicker speed during the startup.</p>' +
-      '<p><strong>Execute</strong> – You know what to do, but can´t get it done fast enough. There are obstacles, lack of resources, changes, etc., getting in the way and consequently the results come in below expectations. <em class="emphasis">Best Practice:</em> Execution is not only about taking the “to do” list and start ticking off the items as fast as you can. All involved need to be aligned to the objective and the way forward. The team should also be committed to the end result, having fun, working together, have the required competence and adequate resources.</p>' +
-      '<p><strong>Sell, sell sell!!!</strong> – Why aren´t we making the numbers? Operational and administrative issues seem to steal too much time from business development. Management and sales people are spending most of their time in the office.  <em class="emphasis">Best Practice:</em> Review your daily activities, prioritize and find ways (outsource, delegate, postpone, eliminate, etc.) to have enough time for sales activities. When you have found enough time, defend that time as if your life depended on it (because it does), while developing your sales cadence and your sales pipeline.</p>' +
-      '<p><strong>Focus on the essential</strong> – There are so many things to do in a startup and multitasking normally becomes the reality. When trying to move 10 tasks forward at the same time, you will probably finish 2 tasks, while 3 more items are added to the list. <em class="emphasis">Best Practice:</em> Prioritize and identify the most essential activities, then solve them one by one. Multitasking slows you down and must be avoided in order to make progress on the most essential activities for the business.</p>' +
-      '<p><strong>Know your customer</strong> – Yes, we all believe in the importance of customer focus and we say things like “The customer is always right…even when he is wrong”. Nevertheless, for many companies’ customer focus has not been properly understood or implemented. <em class="emphasis">Best Practice:</em> Take it to the next level. Identify how your client sees the business, his goals, what he values, main concerns and which are the key purchasing criteria. Then build trust and help the client move towards his goals (while you move the sales process forward).</p>' +
-      '<p><strong>Watch your back</strong> – Some companies don\'t have adequate control of their operation, the risks and legal issues. This is easy to forget when focus is on growing the business, but the consequences can be massive if risks are not managed. <em class="emphasis">Best Practice:</em> Make sure to set up a simple Governance process, controlling the main risks (Tax, HR, Legal, etc.) while also reviewing Business issues on a regular basis.</p>'
-
-
+      '<div class="col-sm-6 col-xs-12 best-practice-item">' +
+      '<h3 class="best-practice-title">Assemble the Dream Team</h3>' +
+      '<p>Some companies’ don´t give adequate attention to recruitment and to building up the right local team. Certain executives actually recruit the first persons they find and then hope they will “pick it up as they go”.<br><em class="emphasis">Best Practice:</em> Recruiting the right people is a key task when starting a new business. When you have found the individuals you should dedicate considerable time to building a well-functioning team, developing the team members, and keeping them focused and motivated.</p>'+
+      '</div>' +
+      '<div class="col-sm-6 col-xs-12 best-practice-item">' +
+      '<h3 class="best-practice-title">Setting up for success</h3>' +
+      '<p>Some companies work and try hard, but never get decent results. This might be due to an inadequate setup, with limitations in structure, resources, people, prices, etc. making it hard to push forward.<br><em class="emphasis">Best Practice:</em> Any business needs the right setup to succeed. Make sure you have the essential components in place to be able to compete effectively, such as price, product, local stock, promotion, delivery times, distribution, etc.</p>' +
+      '</div>' +
+      '<div class="col-sm-6 col-xs-12 best-practice-item">' +
+      '<h3 class="best-practice-title">Throw away the Gantt chart</h3>' +
+      '<p>You have a plan for the startup, but things are running late, while the costs are ticking away. Plans are often sequential and based on traditional methods such as Gantt charts, which give a false sense of control in a quickly changing environment.<br><em class="emphasis">Best Practice:</em> Planning needs to be flexible, based on priorities, done as a team, with constant re-planning and continuously incorporating what the tem is learning. Methods like Lean thinking or Scrum, helps the team move along at a much quicker speed during the startup.</p>' +
+      '</div>' +
+      '<div class="col-sm-6 col-xs-12 best-practice-item">' +
+      '<h3 class="best-practice-title">Execute</h3>' +
+      '<p>You know what to do, but can´t get it done fast enough. There are obstacles, lack of resources, changes, etc., getting in the way and consequently the results come in below expectations.<br><em class="emphasis">Best Practice:</em> Execution is not only about taking the “to do” list and start ticking off the items as fast as you can. All involved need to be aligned to the objective and the way forward. The team should also be committed to the end result, having fun, working together, have the required competence and adequate resources.</p>' +
+      '</div>' +
+      '<div class="col-sm-6 col-xs-12 best-practice-item">' +
+      '<h3 class="best-practice-title">Sell, sell sell!!!</h3>' +
+      '<p>Why aren´t we making the numbers? Operational and administrative issues seem to steal too much time from business development. Management and sales people are spending most of their time in the office.<br><em class="emphasis">Best Practice:</em> Review your daily activities, prioritize and find ways (outsource, delegate, postpone, eliminate, etc.) to have enough time for sales activities. When you have found enough time, defend that time as if your life depended on it (because it does), while developing your sales cadence and your sales pipeline.</p>' +
+      '</div>' +
+      '<div class="col-sm-6 col-xs-12 best-practice-item">' +
+      '<h3 class="best-practice-title">Focus on the essential</h3>' +
+      '<p>There are so many things to do in a startup and multitasking normally becomes the reality. When trying to move 10 tasks forward at the same time, you will probably finish 2 tasks, while 3 more items are added to the list.<br><em class="emphasis">Best Practice:</em> Prioritize and identify the most essential activities, then solve them one by one. Multitasking slows you down and must be avoided in order to make progress on the most essential activities for the business.</p>' +
+      '</div>' +
+      '<div class="col-sm-6 col-xs-12 best-practice-item">' +
+      '<h3 class="best-practice-title">Know your customer</h3>' +
+      '<p>Yes, we all believe in the importance of customer focus and we say things like “The customer is always right…even when he is wrong”. Nevertheless, for many companies’ customer focus has not been properly understood or implemented.<br><em class="emphasis">Best Practice:</em> Take it to the next level. Identify how your client sees the business, his goals, what he values, main concerns and which are the key purchasing criteria. Then build trust and help the client move towards his goals (while you move the sales process forward).</p>' +
+      '</div>' +
+      '<div class="col-sm-6 col-xs-12 best-practice-item">' +
+      '<h3 class="best-practice-title">Watch your back</h3>' +
+      '<p>Some companies don\'t have adequate control of their operation, the risks and legal issues. This is easy to forget when focus is on growing the business, but the consequences can be massive if risks are not managed.<br><em class="emphasis">Best Practice:</em> Make sure to set up a simple Governance process, controlling the main risks (Tax, HR, Legal, etc.) while also reviewing Business issues on a regular basis.</p>' +
+      '</div>'
     });
 
   $translateProvider.translations('pt_BR', {
@@ -433,6 +471,7 @@ var app = angular.module('kazamax', [
     'title.subsidiary': 'Gerenciando a sua Subsidiaria',
     'title.about-kazamax': 'Sobre a Kazamax',
     'title.services': 'O que oferecemos',
+    'title.services2': 'Qual dos nossos serviços se adequa a você?',
     'title.advantages': 'Nossas vantagens',
     'title.differentials': 'O que nos diferencia',
     'title.practices': 'Melhores Práticas',

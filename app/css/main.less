@@ -9,6 +9,10 @@ a {
   cursor: pointer;
 }
 
+ul, ol {
+  padding-left: 12px;
+}
+
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
@@ -189,6 +193,7 @@ section {
 
 .topic-heading {
   color: @color-blue;
+  font-weight: bold;
 }
 
 .btn-more-info {
@@ -330,6 +335,8 @@ section {
 }
 
 .emphasis {
+  font-weight: 700;
+  color: @color-blue;
   display: inline-block;
   border-bottom-style: solid;
   border-bottom-color: @color-dark;
@@ -373,6 +380,7 @@ section {
 
   .page-title {
     color: @color-blue;
+    font-weight: bold;
   }
 
   &.active {
@@ -460,4 +468,44 @@ section {
 
 .cell-align-top {
   vertical-align: top;
+}
+
+.service-title {
+  display: block;
+  color: @color-blue;
+  font-weight: bold;
+
+  border-bottom-color: @color-blue;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  padding-bottom: 3px;
+
+}
+
+.best-practice-title {
+  display: block;
+  color: @color-blue;
+  font-weight: bold;
+
+  border-bottom-color: @color-blue;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  padding-bottom: 3px;
+
+}
+
+.best-practice-item {
+  min-height:260px;
+}
+
+.best-practice-title + p {
+  display: block;
+}
+
+.best-practice-title:hover + p {
+  display: block;
+}
+
+strong {
+  color: @color-blue;
 }

@@ -5,6 +5,10 @@ body {
 a {
   cursor: pointer;
 }
+ul,
+ol {
+  padding-left: 12px;
+}
 [ng\:cloak],
 [ng-cloak],
 .ng-cloak {
@@ -183,6 +187,7 @@ section:first-child {
 }
 .topic-heading {
   color: #004d88;
+  font-weight: bold;
 }
 .btn-more-info {
   color: #ffffff;
@@ -295,6 +300,8 @@ section:first-child {
   width: 75%;
 }
 .emphasis {
+  font-weight: 700;
+  color: #004d88;
   display: inline-block;
   border-bottom-style: solid;
   border-bottom-color: rgba(0, 0, 0, 0.6);
@@ -329,6 +336,7 @@ section:first-child {
 }
 .modal-page .page-title {
   color: #004d88;
+  font-weight: bold;
 }
 .modal-page.ng-hide-add,
 .modal-page.ng-hide-remove {
@@ -393,4 +401,34 @@ section:first-child {
 }
 .cell-align-top {
   vertical-align: top;
+}
+.service-title {
+  display: block;
+  color: #004d88;
+  font-weight: bold;
+  border-bottom-color: #004d88;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  padding-bottom: 3px;
+}
+.best-practice-title {
+  display: block;
+  color: #004d88;
+  font-weight: bold;
+  border-bottom-color: #004d88;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  padding-bottom: 3px;
+}
+.best-practice-item {
+  min-height: 260px;
+}
+.best-practice-title + p {
+  display: block;
+}
+.best-practice-title:hover + p {
+  display: block;
+}
+strong {
+  color: #004d88;
 }
