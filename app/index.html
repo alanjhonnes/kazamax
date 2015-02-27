@@ -4,135 +4,76 @@
 <!--[if IE 8]>         <html lang="en" ng-app="kazamax" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="kazamax" class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Kazamax</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="kazamax">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/main.css">
-  <base href="/">
-  <script src="/bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kazamax</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="kazamax">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <base href="/">
+    <script src="/bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 
-  <!-- In production use:
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
--->
-  <script src="/bower_components/angular/angular.js"></script>
-  <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="/bower_components/angular-translate/angular-translate.js"></script>
-  <script src="/bower_components/angular-animate/angular-animate.js"></script>
-  <script src="/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
-  <script src="/app.js"></script>
+    <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/angular-translate/angular-translate.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="/bower_components/angular-scroll/angular-scroll.min.js"></script>
+    <script src="/app.js"></script>
 </head>
 <body ng-controller="MainCtrl" ng-class="{ 'body-page-active': !$state.is('home') }">
 <header class="header" height-observer="setHeaderHeight">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-xs-12">
-        <a class="logo pull-left" ui-sref="home"><img src="img/logo.png" alt="Kazamax"/></a>
-        <button class="btn btn-menu pull-left" type="button" ng-click="toggleMenu()">
-          <span class="glyphicon glyphicon-menu-hamburger"></span>
-          <span>{{ 'button.menu'|translate }}</span>
-        </button>
-        <div ng-controller="TranslationCtrl" class="ng-scope locale-menu">
-          <button class="btn ng-scope pull-right locale-button" ng-click="changeLanguage('pt_BR')" ng-show="language === 'en'" >{{ 'button.pt'|translate }}</button>
-          <button class="btn ng-scope pull-right locale-button" ng-click="changeLanguage('en')" ng-show="language === 'pt_BR'">{{ 'button.en'|translate }}</button>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <a class="logo pull-left" ui-sref="home"><img src="img/logo.png" alt="Kazamax"/></a>
+                <button class="btn btn-menu pull-left" type="button" ng-click="toggleMenu()">
+                    <span class="glyphicon glyphicon-menu-hamburger"></span>
+                    <span>{{ 'button.menu'|translate }}</span>
+                </button>
+                <div ng-controller="TranslationCtrl" class="ng-scope locale-menu">
+                    <button class="btn ng-scope pull-right locale-button" ng-click="changeLanguage('pt_BR')" ng-show="language === 'en'" >{{ 'button.pt'|translate }}</button>
+                    <button class="btn ng-scope pull-right locale-button" ng-click="changeLanguage('en')" ng-show="language === 'pt_BR'">{{ 'button.en'|translate }}</button>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </header>
 <div class="overlay" ng-show="menuOpen" ng-style="{ marginTop: headerHeight + 'px' }" ng-class="{ active: menuOpen }">
-  <div class="overlay-table">
-    <div class="overlay-row">
-      <div class="overlay-cell cell-33 overlay-left"></div>
-      <nav role="navigation" class="navigation overlay-cell cell-66 overlay-right">
-        <div class="clearfix">
-          <a class="btn-close pull-right" ng-click="closeMenu()">
-            {{ 'button.close'|translate }}
-          </a>
-        </div>
-        <ul class="menu">
-          <li class="menu-item">
-            <a class="menu-link" ng-click="business = !business" ng-init="business=false">
-              {{ 'title.about-business'|translate }}
-            </a>
-            <ul class="menu" collapse="!business">
-              <li class="menu-item">
-                <a class="menu-link" ui-sref="home.business.opportunity">
-                  {{ 'title.opportunity'|translate }}
-                </a>
-              </li>
-              <li class="menu-item">
-                <a class="menu-link" ng-click="challenge = !challenge" ng-init="challenge=false">
-                  {{ 'title.challenge'|translate }}
-                </a>
-                <ul class="menu" collapse="!challenge">
-                  <li class="menu-item">
-                    <a class="menu-link" ui-sref="home.business.challenge.identifying">
-                      {{ 'title.identifying'|translate }}
+    <div class="overlay-table">
+        <div class="overlay-row">
+            <div class="overlay-cell cell-33 overlay-left"></div>
+            <nav role="navigation" class="navigation overlay-cell cell-66 overlay-right">
+                <div class="clearfix">
+                    <a class="btn-close pull-right" ng-click="closeMenu()">
+                        {{ 'button.close'|translate }}
                     </a>
-                  </li>
-                  <li class="menu-item">
-                    <a class="menu-link" ui-sref="home.business.challenge.operation">
-                      {{ 'title.operation'|translate }}
-                    </a>
-                  </li>
-                  <li class="menu-item">
-                    <a class="menu-link" ui-sref="home.business.challenge.distributor">
-                      {{ 'title.distributor'|translate }}
-                    </a>
-                  </li>
-                  <li class="menu-item">
-                    <a class="menu-link" ui-sref="home.business.challenge.subsidiary">
-                      {{ 'title.subsidiary'|translate }}
-                    </a>
-                  </li>
+                </div>
+                <ul class="menu">
+                    <li class="menu-item">
+                        <a class="menu-link"  ng-click="scrollToBusiness()">
+                            {{ 'title.about-business'|translate }}
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link"  ng-click="scrollToKazamax()">
+                            {{ 'title.about-kazamax'|translate }}
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-link" ng-click="scrollToContact()">
+                            {{ 'title.contact'|translate }}
+                        </a>
+                    </li>
                 </ul>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="menu">
-          <li class="menu-item">
-            <a class="menu-link" ng-click="kazamax = !kazamax" ng-init="kazamax = false">
-              {{ 'title.about-kazamax'|translate }}
-            </a>
-            <ul class="menu" collapse="!kazamax">
-              <li class="menu-item">
-                <a class="menu-link" ui-sref="home.kazamax.services">
-                  {{ 'title.services'|translate }}
-                </a>
-              </li>
-              <li class="menu-item">
-                <a class="menu-link" ui-sref="home.kazamax.advantages">
-                  {{ 'title.advantages'|translate }}
-                </a>
-              </li>
-              <li class="menu-item">
-                <a class="menu-link" ui-sref="home.kazamax.differentials">
-                  {{ 'title.differentials'|translate }}
-                </a>
-              </li>
-              <li class="menu-item">
-                <a class="menu-link" ui-sref="home.kazamax.practices">
-                  {{ 'title.practices'|translate }}
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="menu">
-          <li class="menu-item">
-            <a class="menu-link" ng-click="scrollToContact()">
-              {{ 'title.contact'|translate }}
-            </a>
-          </li>
-        </ul>
-      </nav>
+            </nav>
+        </div>
     </div>
-  </div>
 </div>
 <div class="modal-page" ng-show="!$state.is('home')">
     <div class="modal-inner" ui-view="page"></div>

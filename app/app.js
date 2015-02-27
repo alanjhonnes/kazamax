@@ -5,6 +5,7 @@ var app = angular.module('kazamax', [
   'ui.router',
   'pascalprecht.translate',
   'ngAnimate',
+  'duScroll',
     'ui.bootstrap'
 ])
   .run(
@@ -169,7 +170,7 @@ var app = angular.module('kazamax', [
       };
     }])
 
-    .controller('MainCtrl', ['$scope', '$window', function($scope, $window){
+    .controller('MainCtrl', ['$scope', '$window', '$document', function($scope, $window, $document){
       $scope.menuOpen = false;
       $scope.wHeight = $window.innerHeight;
 
@@ -193,8 +194,22 @@ var app = angular.module('kazamax', [
         $scope.$apply();
       });
 
+      $scope.scrollToBusiness = function(){
+        $scope.closeMenu();
+        var element = angular.element(document.getElementById('business'));
+        $document.scrollToElement(element, $scope.headerHeight - 1, 1000);
+      }
+
+      $scope.scrollToKazamax = function(){
+        $scope.closeMenu();
+        var element = angular.element(document.getElementById('kazamax'));
+        $document.scrollToElement(element, $scope.headerHeight - 1, 1000);
+      }
+
       $scope.scrollToContact = function(){
         $scope.closeMenu();
+        var element = angular.element(document.getElementById('contact'));
+        $document.scrollToElement(element, $scope.headerHeight - 1, 1000);
       }
 
       $scope.setHeaderHeight = function(height){
@@ -296,6 +311,10 @@ var app = angular.module('kazamax', [
       'contact.form.email': 'Email',
       'contact.form.phone': 'Phone',
       'contact.form.message': 'Message',
+      'intro.identifying': 'Initially the key challenge might be to have a clear understanding of the drivers of success.',
+      'intro.operation': 'Sometimes the key challenge is having the correct set-up and enough resources to take full advantage of the opportunities.',
+      'intro.distributor': 'Many companies fall into the “distributor dilemma” and don’t reach the results they expect.',
+      'intro.subsidiary': 'Sometimes the results are below expectations in the subsidiary.',
       'page.opportunity': '<h3>The 7th largest economy in the world, Brazil is a land of opportunities for many global players:</h3>' +
       '<ul>' +
       '<li>Brazil has gradually opened up its economy since early 1990s. The level of foreign trade, in relation to the size of the economy, is today similar to that of the USA. </li>' +
@@ -311,7 +330,7 @@ var app = angular.module('kazamax', [
       '<li>#4 for Hyundai, Nestlé, Bayer, Subway, Coca-Cola, Twitter...</li>' +
       '</ul>',
       'page.challenge': '<h3><strong>Brazil</strong> can be a challenge for companies looking to take advantage of the many opportunities the country provides. Many companies hesitate to enter the market or face difficulties trying to establish their businesses. Maybe you recognize some of these common challenges:</h3>',
-      'page.challenge.identifying': '<h3>Initially the key challenge might be to have a clear understanding of the drivers of success.</h3>' +
+      'page.challenge.identifying':
       '<ul>' +
       '<li>What is the size of the market opportunity?</li>' +
       '<li>Who are my potential customers?</li>' +
@@ -321,7 +340,7 @@ var app = angular.module('kazamax', [
       '<li>Which is the best way to enter the market?</li>' +
       '<li>Should we acquire a local company?</li>' +
       '</ul>',
-      'page.challenge.operation': '<h3>Sometimes the key challenge is having the correct set-up and enough resources to take full advantage of the opportunities.</h3>' +
+      'page.challenge.operation':
       '<ul>' +
       '<li>Need for <strong>local stock</strong>, to shorten delivery time. </li>' +
       '<li>Need of strong <strong>management</strong>, to drive business.</li>' +
@@ -331,7 +350,7 @@ var app = angular.module('kazamax', [
       '<li>Need for <strong>technical service</strong>, to give high service level to existing clients.</li>' +
       '<li>Need for <strong>local office</strong>, to provide local contracts and local invoicing, and to show long-term commitment.</li>' +
       '</ul>',
-      'page.challenge.distributor': '<h3>Many companies fall into the “distributor dilemma” and don’t reach the results they expect.</h3>' +
+      'page.challenge.distributor':
       '<h4>a. The Distributor does not give full attention to the Company:</h4>' +
       '<ul>' +
       '<li>Distributors have many product lines competing for attention, so they normally focus on products they know and are used to selling.</li>' +
@@ -347,7 +366,7 @@ var app = angular.module('kazamax', [
       '<li>Executive does not have time/resources to give strong support to the distributor. </li>' +
       '<li>Sales Executive visits Brazil 1-2 times per year and has only limited interaction with final customers.  </li>' +
       '</ul>',
-      'page.challenge.subsidiary': '<h3>Sometimes the results are below expectations in the subsidiary.</h3>' +
+      'page.challenge.subsidiary':
       '<ul>' +
       '<li>Investments and costs might be higher than expected as the initial projections were not accurate or detailed enough.</li>' +
       '<li>Sales are below expectation and potential deals are not moving forward as planned.</li>' +
