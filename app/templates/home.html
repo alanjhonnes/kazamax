@@ -115,7 +115,7 @@
                         </div>
                         <button type="submit" ng-disabled="submitButtonDisabled" class="btn btn-primary">{{ 'button.submit'|translate }}</button>
                     </form>
-                    <p ng-class="result" style="padding: 15px; margin: 0;">{{ resultMessage }}</p>
+                    <div class="alert" ng-class="result" ng-show="submitted" role="alert">{{ resultMessage|translate }}</div>
                 </div>
             </div>
         </div>
