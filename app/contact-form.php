@@ -42,8 +42,8 @@ if (isset($_POST['inputName']) && isset($_POST['inputEmail']) && isset($_POST['i
     $data = array('success' => true, 'message' => 'contact.success');
     echo json_encode($data);
 
-} else {
+}
+else {
     $data = array('success' => false, 'message' => 'contact.fill-fields');
     echo json_encode($data);
-
 }

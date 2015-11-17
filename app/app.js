@@ -301,11 +301,11 @@ var app = angular.module('kazamax', [
       'text.partnership': 'Partnership',
       'text.consulting': 'Consulting',
       'text.execution': 'Execution',
-      'text.governance': 'Governance',
+      'text.governance': 'Mergers & Acquisitions',
       'text.home-intro': 'We help companies <span class="blue">successfully</span> navigate the Brazilian market and achieve better results.',
       'text.opportunity': 'The 7th largest economy in the world, Brazil is a land of opportunities for many global players:',
       'text.challenge': 'Brazil can be a challenge for companies seeking to take advantage of the many opportunities the country provides.',
-      'text.services': 'Learn what Kazamax can do for you: Partnership, Consulting, Execution, Governance.',
+      'text.services': 'Learn what Kazamax can do for you: Partnership, Consulting, Execution, Acquisitions.',
       'text.advantages': 'Find out more about the experience we bring to the table.',
       'text.differentials': 'Kazamax is more than an advisor. Here\'s what makes us different.',
       'text.practices': 'Some of the things you might want to consider when starting a new company.',
@@ -406,21 +406,22 @@ var app = angular.module('kazamax', [
       '<div class="col-sm-6 col-lg-3">' +
       '<h3 class="service-title">Execution</h3>' +
       '<p>' +
-      'You are established in Brazil but face challenges with execution, results or support to local management. We can provide  execution support through:<br>' +
+      'You are established in Brazil but face challenges with execution, as for example lack of control, results below expectations or insufficient support to local management. We can provide execution support through:<br>' +
       '<ul>' +
-      '<li><strong>Workshops</strong>. Facilitate the development of business plans and execution plans in workshops.</li>' +
-      '<li><strong>Business Coaching</strong>. Assisting local management to perform better by providing continuous coaching and advice.</li>' +
-      '<li><strong>M&A</strong>. Assisting in acquisition, mergers and exits.</li>' +
+      '<li><strong>Business Coaching and Workshops</strong>. Assisting local management to perform better through Business Coaching, Workshops and by providing ongoing advice.</li>' +
+      '<li><strong>Governance as a Service</strong>. Assisting foreign based managers by providing local expertise, increase control, reduce risk, etc. in the local subsidiary.</li>' +
+      '<li><strong>Advisory Board</strong>. Acting as an Advisory Board Member, or setting up an Advisory Board, to get needed expertise, larger network and improved Governance.</li>' +
       '</ul>' +
       '</p>' +
       '</div>' +
       '<div class="col-sm-6 col-lg-3">' +
-      '<h3 class="service-title">Governance</h3>' +
+      '<h3 class="service-title">Mergers & Acquisitions</h3>' +
       '<p>' +
-      'You are already established in Brazil but feel the need to increase control, reduce risk and “be on top” of the business. We can provide support with:<br>' +
+      'You want to enter Brazil, or expand your local business, through an acquisition or a Joint Venture, or maybe you want to divest. We can support with:<br>' +
       '<ul>' +
-      '<li><strong>Governance as a Service</strong>. Assisting foreign based managers by providing local expertise, increase control, reduce risk, etc.in the local subsidiary.</li>' +
-      '<li><strong>Advisory Board</strong>. Acting as a Member or setting up an Advisory  Board to get needed expertise, larger network and improved Governance.</li>' +
+      '<li><strong>Search</strong>. Prepare search profile, identifying potential targets and advice on fit with your business objectives.</li>' +
+      '<li><strong>Negotiations</strong>. Contact target companies, prepare Letter of Intent, Valuation, manage negotiation process, coordinate Due Diligence and contract writing, as well as general advice throughout the process.</li>' +
+      '<li><strong>Post-acquisition</strong>. Develop and manage the post-acquisition plan, communication plan, etc., so that business results are achieved as quickly as possible.</li>' +
       '</ul>' +
       '</p>' +
       '</div>',
@@ -504,11 +505,11 @@ var app = angular.module('kazamax', [
     'text.partnership': 'Parcerias',
     'text.consulting': 'Consultoria',
     'text.execution': 'Execução',
-    'text.governance': 'Governança',
+    'text.governance': 'Fusões e Aquisições',
     'text.home-intro': 'Nós ajudamos empresas a navegar com <span class="blue">sucesso</span> o mercado brasileiro e alcançar melhores resultados.',
     'text.opportunity': 'Sendo a sétima economia do mundo, o Brasil é uma terra de oportunidades para muitos empreendedores globais.',
     'text.challenge': 'O Brasil pode ser um desafio para empresas que pretendem tirar proveito das muitas oportunidades que o país oferece.',
-    'text.services': 'Descubra o que a Kazamax pode fazer por você: Parcerias, Consultoria, Execução e Governança.',
+    'text.services': 'Descubra o que a Kazamax pode fazer por você: Parcerias, Consultoria, Execução e Aquisições.',
     'text.advantages': 'Saiba mais sobre a experiência que oferecemos.',
     'text.differentials': 'Kazamax é mais do que uma consultoria. Veja o que nos torna diferente.',
     'text.practices': 'Alguns pontos que você deve considerar ao começar uma nova empresa.',
@@ -609,21 +610,22 @@ var app = angular.module('kazamax', [
     '<div class="col-sm-6 col-lg-3">' +
     '<h3 class="service-title">Execução</h3>' +
     '<p>' +
-    'Você está estabelecido no Brasil, mas enfrenta desafios como execução, resultados ou suporte à gerencia local. Nós podemos providenciar suporte de execução através de:<br>' +
+    'Você já está no Brasil, mas enfrenta desafios com a execução, como por exemplo, falta de controle, resultados abaixo da expectativa, ou falta de suporte à gerencia local. Nós podemos providenciar suporte de execução através de:<br>' +
     '<ul>' +
-    '<li><strong><em>Workshops</em></strong>. Facilitar o desenvolvimento de planos de negócio e planos de execução em <em>workshops</em>.</li>' +
-    '<li><strong>Coaching de negócio</strong>. Ajudar a gerência local a ter melhores resultados providenciando Coaching e conselhos.</li>' +
-    '<li><strong>M&A</strong>. Ajudando em aquisições, fusões e vendas de empresas. </li>' +
+    '<li><strong>Coaching de negócio e <em>Workshops</em></strong>. Ajudar a gerência local a ter melhores resultados providenciando Coaching, <em>Workshops</em> e conselhos no dia-a-dia..</li>' +
+    '<li><strong>Governança como serviço</strong>. Ajudar os responsáveis estrangeiros com competência local, melhor controle, redução de riscos, na subsidiária local.</li>' +
+    '<li><strong>Conselho Administrativo</strong>. Agir como um Membro do Conselho Administrativo ou estabelecer um Conselho para obter a competência necessária, aumentar o <em>Network</em> e melhorar a Governança.</li>' +
     '</ul>' +
     '</p>' +
     '</div>' +
     '<div class="col-sm-6 col-lg-3">' +
-    '<h3 class="service-title">Governança</h3>' +
+    '<h3 class="service-title">Fusões e Aquisições</h3>' +
     '<p>' +
-    'Você já se estabeleceu no Brasil, mas acha que existe a necessidade de aumentar o controle, reduzir riscos e “estar a par” do negócio. Nós podemos ajudar com:<br>' +
+    'Você gostaria de estabelecer uma entidade no Brasil, ou expandir seu negocio atual, através de uma aquisição ou um Joint Venture, ou talvez queira vender seu negócio. Nós podemos ajudar com:<br>' +
     '<ul>' +
-    '<li><strong>Governânça como serviço</strong>. Ajudar os responsáveis estrangeiros com <em>expertise</em> local, aumento de controle, redução de riscos, etc. na subsidiária local.</li>' +
-    '<li><strong>Conselho Administrativo</strong>. Agir como um Membro ou estabelecer um Conselho para obter a <em>expertise</em> necessária, aumentar o <em>Network</em> e melhorar a Governança.</li>' +
+    '<li><strong>Busca</strong>. Preparar perfil de busca, identificar empresas potenciais e ajudar com recomendações sobre o alinhamento com seus objetivos de negocio. </li>' +
+    '<li><strong>Negociação</strong>. Contatar empresas escolhidas, preparar carta de intenção, <em>Valuation</em>, liderar o processo de negociação, coordenar <em>Due Diligence</em> e contratos, além de aconselhar durante o processo.</li>' +
+    '<li><strong>Após a aquisição</strong>. Desenvolver e administrar o plano de integração, plano de comunicação, etc., com a intensão de alcançar resultados de negocio o mais rápido possível. </li>' +
     '</ul>' +
     '</p>' +
     '</div>',
